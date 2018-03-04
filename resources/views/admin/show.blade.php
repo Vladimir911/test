@@ -3,6 +3,8 @@
 @section('page_content')
 
     @foreach($posts as $post)
+        <a href="/admin/create"> Создать пост</a>
+        @foreach($posts as $post)
         <h1>{{ $post->title }}</h1>
         <p>{{ $post->content }}</p>
         <ul class="list-inline">
