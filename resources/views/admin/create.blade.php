@@ -14,19 +14,23 @@
     @endif
 
 
-{!! Form::open(['route' => 'admin.store']) !!}
+    {!! Form::open(['route' => 'admin.store']) !!}
 
-<div class="form-group">
-    {{Form::label('title', 'Title')}}
-    {{Form::text('title', null, ['class' => 'form-control'])}}
-</div>
-<div class="form-group">
-    {{Form::label('content', 'Content')}}
-    {{Form::text('content', null, ['class' => 'form-control'])}}
-</div>
+    <div class="form-group">
+        {{Form::label('title', 'Title')}}
+        {{Form::text('title', null, ['class' => 'form-control'])}}
+    </div>
+    <div class="form-group">
+        {{Form::label('content', 'Content')}}
+        {{Form::text('content', null, ['class' => 'form-control'])}}
+    </div>
+    <div class="form-group">
+        {{Form::label('category', 'category')}}
+        {{Form::text('category_id',$catyrgories,['class'=>'form-control']}}
+    </div>
 
-{{Form::submit('Создать пост', ['class' => 'btn btn-primary'])}}
+    {{Form::submit('Создать пост', ['class' => 'btn btn-primary'])}}
 
-{!! Form::close() !!}
+    {!! Form::close() !!}
 
 @endsection

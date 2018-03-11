@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Http\Requests\PostRequest;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('admin.show', compact('posts'));
+        $categories = Category::all();
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -27,8 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories= Category::all()->pluck('title','id');
-        return view('admin.create');
+        return view('category.create');
     }
 
     /**
@@ -41,7 +40,7 @@ class PostController extends Controller
     {
         Post::create($request->all());
 
-        return redirect()->route('admin.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -61,10 +60,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $post = Post::find($id);
-        return view('admin.edit', compact('post'));
+                return view('category.edit', compact('category'));
     }
 
     /**
@@ -76,9 +74,9 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::find($id);
-        $post->update($request->all());
-        return redirect()->route('admin.index');
+        $category = category::find($id);
+        $category->update($request->all());
+        return redirect()->route('category.index');
 
     }
 
@@ -90,8 +88,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        $post->delete();
-        return redirect()->route('admin.index');
+        $category = category::find($id);
+        $category->delete();
+        return redirect()->route('category.index');
     }
 }
